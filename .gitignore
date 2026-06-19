@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+data/raw/
+data/processed/
+data/evidence/
+data/evaluation/
+*.csv
+*.json
+*.jsonl
+!configs/*.json
+
+# Models
+models/lstm/*.keras
+models/lstm/*.h5
+models/lstm/*.pkl
+models/lstm/*.model
+
+# Environment
+.env
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/plans/
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# ChromaDB
+data/evidence/chroma_db/
+
+# Logs
+*.log

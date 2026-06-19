@@ -1,0 +1,72 @@
+# FAKTA Source Tier Configuration
+
+tiers:
+  1:
+    name: "Google Fact Check API"
+    credibility_weight: 1.0
+    description: "Verified fact-checks from recognized organizations"
+
+  2:
+    name: "Official Government Sources"
+    credibility_weight: 0.9
+    sources:
+      - "Kemenkes RI"
+      - "BPOM"
+      - "BMKG"
+      - "Kominfo"
+      - "KPU"
+      - "Bawaslu"
+      - "BI"
+      - "OJK"
+      - "BPS"
+
+  3:
+    name: "Media Kredibel & Fact-Check Database"
+    credibility_weight: 0.75
+    sources:
+      - "TurnBackHoax"
+      - "CekFakta"
+      - "Antara News"
+      - "Kompas"
+      - "Tempo"
+      - "CNN Indonesia"
+      - "Reuters"
+      - "AP News"
+      - "BBC"
+
+  4:
+    name: "Wikipedia / General Knowledge"
+    credibility_weight: 0.4
+    description: "Background knowledge only, not a primary verifier"
+
+# Domain-to-source mapping
+domain_sources:
+  kesehatan:
+    primary: ["BPOM", "Kemenkes RI", "WHO"]
+    fallback: ["TurnBackHoax", "Media Kredibel"]
+
+  bencana:
+    primary: ["BMKG", "BNPB"]
+    fallback: ["Media Kredibel"]
+
+  pemilu:
+    primary: ["KPU", "Bawaslu"]
+    fallback: ["Media Kredibel", "CekFakta"]
+
+  ekonomi:
+    primary: ["BI", "OJK", "BPS", "BEI"]
+    fallback: ["Media Kredibel"]
+
+  hoaks_viral:
+    primary: ["Google Fact Check API", "TurnBackHoax", "CekFakta"]
+    fallback: ["Media Kredibel"]
+
+  pengetahuan_umum:
+    primary: ["Wikipedia"]
+    fallback: []
+
+# Recency scoring
+recency:
+  fresh_days: 30       # Score 1.0
+  decay_start_days: 90  # Start decaying after this
+  stale_days: 730      # Score approaches 0 after ~2 years

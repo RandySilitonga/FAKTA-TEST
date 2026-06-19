@@ -1,0 +1,26 @@
+# === Core (semua butuh) ===
+google-generativeai>=0.3
+fastapi>=0.109
+uvicorn>=0.27
+streamlit>=1.30
+pydantic>=2.5
+wikipedia-api>=0.5
+requests>=2.31
+pandas>=2.1
+numpy>=1.24
+scikit-learn>=1.3
+nltk>=3.8
+sastrawi>=1.0
+beautifulsoup4>=4.12
+lxml>=4.9
+pyyaml>=6.0
+python-dotenv>=1.0
+rank_bm25>=0.2.2
+
+# === Evidence Retrieval ===
+chromadb>=0.4
+sentence-transformers>=2.2
+
+# === ML (hanya jika training lokal) ===
+# tensorflow>=2.15
+# torch>=2.0

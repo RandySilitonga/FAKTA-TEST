@@ -1,0 +1,38 @@
+# FAKTA Confidence Fusion Configuration
+
+# Weight profiles for different evidence quality regimes
+regimes:
+  strong_evidence:
+    # Evidence quality >= 0.50: trust LLM + evidence heavily
+    lstm_weight: 0.25
+    llm_weight: 0.50
+    linguistic_weight: 0.10
+
+  weak_evidence:
+    # 0 < evidence_quality < 0.50: lean on LSTM, low confidence
+    lstm_weight: 0.55
+    llm_weight: 0.10
+    linguistic_weight: 0.25
+
+  no_evidence:
+    # evidence_quality == 0: LSTM-only, pull toward NEI
+    lstm_weight: 0.69    # normalized from 0.55/(0.55+0.25)
+    linguistic_weight: 0.31  # normalized from 0.25/(0.55+0.25)
+
+# Thresholds
+quality_threshold: 0.50    # Strong vs weak evidence boundary
+hoax_threshold: 0.70       # Above this = Hoax
+valid_threshold: 0.30      # Below this = Tidak Hoax
+# Between valid_threshold and hoax_threshold = Tidak Cukup Bukti
+
+# Evidence quality computation weights
+evidence_quality_weights:
+  relevance: 0.50
+  credibility: 0.30
+  recency: 0.20
+
+# Conflict penalty
+conflict_penalty_factor: 0.3  # Multiply by evidence_conflict to reduce confidence
+
+# NEI pull factor (no evidence regime)
+nei_pull_factor: 0.4  # How much to pull toward 0.5 when LSTM is uncertain
